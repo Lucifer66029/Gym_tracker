@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- السطرين السحريين -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <title>Gym Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="page-header">
+    <div class="header-content">
+        <h1> Gym Tracker</h1>
+        <p class="subtitle">Track your workouts & progress</p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="page-title">
+        <h2>Workout Folders</h2>
+        <p class="page-description">Create folders to organize your exercises</p>
+    </div>
+
+    <div class="input-group">
+        <label for="folderName" class="input-label">New Folder Name</label>
+        <input type="text" id="folderName" placeholder="e.g., Chest Day, Leg Day...">
+        <button id="addFolder" class="primary-btn"> Add Folder</button>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">Your Folders</h3>
+        <p class="section-subtitle" id="folderCount">0 folders</p>
+        <ul id="folderList" class="item-list"></ul>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

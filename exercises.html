@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Exercises</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="page-header">
+    <div class="header-content">
+        <button class="back-btn" onclick="goBack()">← Back</button>
+        <button class="home-btn" onclick="goHome()">🏠 Home</button>
+    </div>
+</header>
+
+<div class="container">
+    <div class="page-title">
+        <h2 id="folderTitle">Loading...</h2>
+        <p class="page-description" id="exerciseCount">0 exercises</p>
+    </div>
+
+    <div class="input-group">
+        <label for="exerciseName" class="input-label">New Exercise Name</label>
+        <input type="text" id="exerciseName" placeholder="e.g., Bench Press, Squat...">
+        <button id="addExercise" class="primary-btn"> Add Exercise</button>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">Exercises in this folder</h3>
+        <ul id="exerciseList" class="item-list"></ul>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
