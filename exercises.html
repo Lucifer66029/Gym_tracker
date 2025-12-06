@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2ecc71">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    
     <title>Exercises</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,7 +16,7 @@
 <header class="page-header">
     <div class="header-content">
         <button class="back-btn" onclick="goBack()">← Back</button>
-        <button class="home-btn" onclick="goHome()">🏠 Home</button>
+        <h1>📁 Exercises</h1>
     </div>
 </header>
 
@@ -24,7 +29,7 @@
     <div class="input-group">
         <label for="exerciseName" class="input-label">New Exercise Name</label>
         <input type="text" id="exerciseName" placeholder="e.g., Bench Press, Squat...">
-        <button id="addExercise" class="primary-btn"> Add Exercise</button>
+        <button id="addExercise" class="primary-btn">➕ Add Exercise</button>
     </div>
 
     <div class="section">
