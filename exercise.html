@@ -1,84 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#2ecc71">
-    <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2ecc71" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
     <title>Exercise Details</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header class="page-header">
-    <div class="header-content">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="header-content">
         <button class="back-btn" onclick="goBack()">← Back</button>
-        <h1>💪 Exercise</h1>
-    </div>
-</header>
+      </div>
+    </header>
 
-<div class="container">
-    <div class="exercise-header">
+    <div class="container">
+      <div class="exercise-header">
         <h1 id="exerciseTitle">Loading Exercise...</h1>
         <button id="editName" class="edit-btn">✏️ Edit Name</button>
-    </div>
+      </div>
 
-    <!-- Timer Section -->
-    <div class="timer-box">
+      <!-- Timer Section -->
+      <div class="timer-box">
         <h2>⏱️ Rest Timer</h2>
         <div class="timer-display" id="timerDisplay">01:30</div>
         <div class="timer-controls">
-            <button class="timer-btn" id="timerStart">Start</button>
-            <button class="timer-btn" id="timerPause">Pause</button>
-            <button class="timer-btn" id="timerReset">Reset</button>
+          <button class="timer-btn" id="timerStart">Start</button>
+          <button class="timer-btn" id="timerPause">Pause</button>
+          <button class="timer-btn" id="timerReset">Reset</button>
         </div>
         <div class="timer-presets">
-            <button class="preset-btn" data-time="30">30s</button>
-            <button class="preset-btn" data-time="60">1m</button>
-            <button class="preset-btn" data-time="90">1:30</button>
-            <button class="preset-btn" data-time="120">2m</button>
+          <button class="preset-btn" data-time="30">30s</button>
+          <button class="preset-btn" data-time="60">1m</button>
+          <button class="preset-btn" data-time="90">1:30</button>
+          <button class="preset-btn" data-time="120">2m</button>
         </div>
+      </div>
+
+      <!-- Add New Set Button -->
+      <div class="add-set-section">
+        <button id="addSetBtn" class="primary-btn">➕ Add New Set</button>
+      </div>
+
+      <!-- Sets Container - هنا هتظهر كل المجموعات -->
+      <div id="setsContainer" class="sets-container">
+        <!-- Sets will be added here dynamically -->
+      </div>
+
+      <!-- Notes Section -->
+      <div class="notes-box">
+        <h2>📝 Exercise Notes</h2>
+        <textarea
+          id="exerciseNotes"
+          placeholder="Add general notes about this exercise..."
+        ></textarea>
+      </div>
+
+      <!-- Reset Button -->
+      <button id="reset" class="reset-btn">🔄 Reset All Sets</button>
     </div>
 
-    <!-- Sets Counter -->
-    <div class="counter-box">
-        <h2>📊 Sets</h2>
-        <div class="counter-controls">
-            <button class="btn dec-btn" id="set-dec">−</button>
-            <span class="counter-value" id="set-value">0</span>
-            <button class="btn inc-btn" id="set-inc">+</button>
+    <!-- Template for a single set (hidden) -->
+    <template id="setTemplate">
+      <div class="set-box" data-set-id="">
+        <div class="set-header">
+          <h3 class="set-number">Set #<span class="set-index">1</span></h3>
+          <button class="delete-set-btn">🗑️</button>
         </div>
-    </div>
 
-    <!-- Reps Counter -->
-    <div class="counter-box">
-        <h2>🔄 Reps</h2>
-        <div class="counter-controls">
-            <button class="btn dec-btn" id="rep-dec">−</button>
-            <span class="counter-value" id="rep-value">0</span>
-            <button class="btn inc-btn" id="rep-inc">+</button>
+        <div class="set-controls">
+          <!-- Reps Counter -->
+          <div class="set-counter">
+            <h4>Reps</h4>
+            <div class="counter-controls small">
+              <button class="btn dec-btn set-rep-dec">−</button>
+              <span class="counter-value set-rep-value">0</span>
+              <button class="btn inc-btn set-rep-inc">+</button>
+            </div>
+          </div>
+
+          <!-- Weight Input -->
+          <div class="set-weight">
+            <h4>Weight (kg)</h4>
+            <input
+              type="number"
+              step="0.1"
+              min="0"
+              placeholder="0.0"
+              class="set-weight-input"
+            />
+          </div>
         </div>
-    </div>
 
-    <!-- Weight Input -->
-    <div class="counter-box">
-        <h2>🏋️‍♂️ Weight (kg)</h2>
-        <input id="weight-input" type="number" step="0.1" min="0" placeholder="0.0" class="weight-input">
-    </div>
+        <!-- Set Notes -->
+        <div class="set-notes">
+          <textarea
+            class="set-notes-input"
+            placeholder="Set notes..."
+          ></textarea>
+        </div>
+      </div>
+    </template>
 
-    <!-- Notes Section -->
-    <div class="notes-box">
-        <h2>📝 Notes</h2>
-        <textarea id="exerciseNotes" placeholder="Add notes about this exercise..."></textarea>
-    </div>
+    <footer class="page-footer">
+      <p>© 2025 Mohamed Reda - Gym Tracker Pro</p>
+    </footer>
 
-    <!-- Reset Button Only -->
-    <button id="reset" class="reset-btn">🔄 Reset Counters</button>
-</div>
-
-<script src="app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>

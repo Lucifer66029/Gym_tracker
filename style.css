@@ -1,10 +1,40 @@
 /* ========================= */
-/* GYM TRACKER - MOBILE CSS */
+/* GYM TRACKER - NATURAL SCROLLING */
 /* ========================= */
 
 /* ======================== */
 /* RESET & BASE STYLES */
 /* ======================== */
+
+/* ======================== */
+/* PREVENT ZOOM ON MOBILE */
+/* ======================== */
+
+/* Prevent zoom on focus */
+input, textarea, select, button {
+    font-size: 16px !important;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Specific fix for counter buttons */
+.counter-controls .btn {
+    font-size: 28px !important;
+    min-height: 60px;
+}
+
+/* Prevent double-tap zoom */
+html {
+    touch-action: manipulation;
+}
+
+/* For iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    input, textarea, button {
+        font-size: 16px !important;
+    }
+}
 
 * {
     margin: 0;
@@ -59,8 +89,6 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     line-height: 1.6;
     min-height: 100vh;
-    padding: 0;
-    margin: 0;
     overflow-x: hidden;
 }
 
@@ -71,8 +99,8 @@ body {
 .container {
     max-width: 450px;
     margin: 0 auto;
-    padding: var(--spacing-md);
-    padding-bottom: var(--spacing-xl);
+    padding: 20px;
+    min-height: 100vh;
 }
 
 /* ======================== */
@@ -115,14 +143,6 @@ body {
     text-align: center;
     flex: 1;
 }
-
-.subtitle {
-    color: var(--gray);
-    font-size: 14px;
-    text-align: center;
-    margin-top: var(--spacing-xs);
-}
-
 /* ======================== */
 /* PAGE TITLES & SECTIONS */
 /* ======================== */
@@ -540,7 +560,7 @@ button,
 
 @media (max-width: 480px) {
     .container {
-        padding: var(--spacing-sm);
+        padding: var(--spacing-md);
     }
     
     .page-header {
@@ -615,4 +635,139 @@ button,
 .primary-btn:active,
 .action-btn:active {
     animation: pulse 0.2s ease;
+}
+/* ======================== */
+/* MULTIPLE SETS STYLES */
+/* ======================== */
+
+.add-set-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.sets-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.set-box {
+    background: var(--dark-light);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--dark-lighter);
+    transition: all 0.3s ease;
+}
+
+.set-box:hover {
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.1);
+}
+
+.set-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.set-header h3 {
+    font-size: 18px;
+    color: var(--primary);
+    margin: 0;
+}
+
+.delete-set-btn {
+    background: var(--danger);
+    color: var(--light);
+    border: none;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delete-set-btn:hover {
+    background: var(--danger-dark);
+}
+
+.set-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.set-counter, .set-weight {
+    text-align: center;
+}
+
+.set-counter h4, .set-weight h4 {
+    margin-bottom: var(--spacing-sm);
+    font-size: 14px;
+    color: var(--gray);
+}
+
+.counter-controls.small {
+    gap: var(--spacing-md);
+}
+
+.counter-controls.small .btn {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.counter-controls.small .counter-value {
+    font-size: 28px;
+}
+
+.set-weight-input {
+    width: 100%;
+    padding: var(--spacing-md);
+    background: var(--dark);
+    border: 2px solid var(--dark-lighter);
+    border-radius: var(--radius-md);
+    color: var(--light);
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.set-notes textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    background: var(--dark);
+    border: 1px solid var(--dark-lighter);
+    border-radius: var(--radius-sm);
+    color: var(--light);
+    font-size: 14px;
+    min-height: 60px;
+    resize: vertical;
+}
+
+/* Responsive for sets */
+@media (max-width: 480px) {
+    .set-controls {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .set-box {
+        padding: var(--spacing-md);
+    }
+}
+/* ======================== */
+/* FOOTER STYLES */
+/* ======================== */
+
+.page-footer {
+    text-align: center;
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    color: var(--gray);
+    font-size: 12px;
+    border-top: 1px solid var(--dark-lighter);
+    background: var(--dark);
 }
